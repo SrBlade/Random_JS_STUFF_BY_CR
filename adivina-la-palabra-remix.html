@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina la Palabra</title>
+    <style>
+        :root {
+            --Azul-oscuro: #282185;
+            --Amarillo-anaranjado: #fcba3e;
+            --Blanco: #f8f7f9;
+            --Azul: #2f2692;
+            --Marrón-claro: #9b8278;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: var(--Azul-oscuro);
+        }
+        #game {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid var(--Amarillo-anaranjado);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--Azul);
+            color:  var(--Blanco);
+        }
+        input[type="text"] {
+            width: 50px;
+            padding: 5px;
+            margin-right: 10px;
+            text-transform: uppercase;
+            text-align: center;
+            
+        }
+        input[type="button"] {
+            padding: 5px 10px;
+        }
+        #message {
+            margin-top: 20px;
+        }
+        #word {
+            font-size: 24px;
+            margin-top: 20px;
+            letter-spacing: 5px;
+        }
+        .adivinar-button {
+            padding: 10px 20px;
+            background-color: var(--Amarillo-anaranjado);
+            border-radius: 1px;
+            border: transparent;
+        }
+
+        .guess-button {
+            background-color: var(--Amarillo-anaranjado);
+            padding: 10px 30px;
+            border-radius: 5px;
+            border: transparent;
+        }
+
+        #button {
+            padding: 10px 60px;
+            background-color: var(--Amarillo-anaranjado);
+            border-radius: 10px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <h1> Adivina la Palabra</h1>
+        <p id="intentos"></p>
+        <p id="parrafo">introduce una letra:</p>
+        <label for="">
+        <input type="text" id="guess" class="guess-button">
+        <input type="button" value="Adivinar" onclick="checkGuess()" class="adivinar-button" id="adivinarButton">
+         </label>
+        <p id="message"></p>
+        <p id="word"></p>
+        <button id="button" onclick="resetButton()">Reiniciar</button>
+    </div>
+
+    <script>
+        const words = ["JAVASCRIPT", "PROGRAMACION", "DESARROLLO", "CODIGO", "FUNCION", "PYTHON", "REACT", "NODE", 'RUBY', 'C##', 'CSS', 'HTML', 'TYPESCRIPT', 'NEXTJS', 'DEPLOY', 'DEPLOYMENT', 'PRODUCCION', 'TAILWINDCSS', 'HTMX', 'PHP', 'COBOL', 'SWIFT', 'LINUX'];
+        let randomWord = words[Math.floor(Math.random() * words.length)];
+        let guessedWord = Array(randomWord.length).fill("_");
+        let attempts = 3;
+        let maxAttemps = 3;
+
+        document.getElementById('word').textContent = guessedWord.join(" ");
+
+        function checkGuess() {
+            let userGuess = document.getElementById('guess').value.toUpperCase();
+            let message = document.getElementById('message');
+            let wordDisplay = document.getElementById('word');
+            let intentos = document.getElementById('intentos');
+            let correctGuess = false;
+            
+            
+            
+
+            for (let i = 0; i < randomWord.length; i++) {
+                if (randomWord[i] === userGuess) {
+                    guessedWord[i] = userGuess;
+                    correctGuess = true;
+                }
+            }
+
+            wordDisplay.textContent = guessedWord.join(" ");
+            document.getElementById('guess').value = '';
+
+            if (correctGuess) {
+                message.textContent = `¡Buena elección!`;
+                message.style.color = 'green';
+
+            } 
+            else {
+                message.textContent = `La letra ${userGuess} no está en la palabra.`;
+                message.style.color = 'red';
+                attempts--;
+                
+                
+                intentos.textContent = `Te quedan ${attempts} intentos`
+            }
+
+            if (guessedWord.join("") === randomWord) {
+                message.textContent = `¡Felicidades! Adivinaste la palabra "${randomWord}" `;
+                message.style.color = 'white';
+                resetGame();
+            } else {
+                stopGame()
+            }
+
+            
+        }
+
+        function resetGame() {
+            randomWord = words[Math.floor(Math.random() * words.length)];
+            guessedWord = Array(randomWord.length).fill("_");
+            attempts = attempts;
+            document.getElementById('intentos').textContent = `Te quedan ${attempts} intentos `
+            document.getElementById('word').textContent = guessedWord.join(" ");
+            
+        }
+
+        function stopGame() {
+            if (attempts === 0) {
+                message.textContent = `Lo siento, perdiste, la palabra era ${randomWord} intentalo de nuevo`
+                attempts = attempts + 4;
+                message.style.color = 'red';
+                setTimeout(() => {
+                    location.reload();
+                }, 3000);
+                word.textContent = ``
+                document.getElementById('adivinarButton').style.display = 'none';
+                document.getElementById('guess').style.display = 'none';
+                document.getElementById('parrafo').style.display = 'none';
+            }
+
+
+        }
+
+        function resetButton () {
+            location.reload()
+        }
+
+        function loseGame () {
+            if (attempts >= maxAttempts) {
+                message.textContent = `Perdiste. La palabra era "${randomWord}". Recargando...`;
+                message.style.color = 'red';
+                setTimeout(() => {
+                    location.reload();
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>

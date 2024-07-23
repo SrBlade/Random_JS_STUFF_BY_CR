@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina el Número!</title>
+    <style>
+
+            :root {
+            --Azul-oscuro: #282185;
+            --Amarillo-anaranjado: #fcba3e;
+            --Blanco: #f8f7f9;
+            --Azul: #2f2692;
+            --Marrón-claro: #9b8278;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            display: grid;
+            place-items: center;
+            background-color: var(--Azul-oscuro);
+        }
+        #game {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid var(--Amarillo-anaranjado);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--Azul);
+            color: var(--Blanco);
+        }
+        input[type="number"] {
+            width: 50px;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        input[type="button"] {
+            padding: 5px 10px;
+        }
+        #message {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <h1>Adivina el Número</h1>
+        <p>Adivina un número entre 1 y 100</p>
+        <label for="game">
+        <input type="number" id="guess" min="1" max="100">
+
+        <input type="button" value="Guess!" onclick="checkGuess()">
+    </label>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            let userGuess = document.getElementById('guess').value;
+            let message = document.getElementById('message');
+            attempts++;
+
+            if (userGuess == randomNumber) {
+                message.textContent = `¡Felicidades! Adivinaste el número en ${attempts} intentos.`;
+                message.style.color = 'green';
+                resetGame();
+            } else if (userGuess > randomNumber) {
+                message.textContent = 'Tu suposición es demasiado alta.';
+                message.style.color = 'red';
+            } else if (userGuess < randomNumber) {
+                message.textContent = 'Tu suposición es demasiado baja.';
+                message.style.color = 'red';
+            } 
+        }
+
+        function resetGame() {
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            attempts = 0;
+        }
+    </script>
+</body>
+</html>
