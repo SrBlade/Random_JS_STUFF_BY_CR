@@ -105,7 +105,7 @@ a()*/
 //cada una se puede llamar fuera de la misma a la vez.
 
 //A metodo, se le conoce como ejecutar una funcion, dentro de un objeto. example
-
+/*
 const ship = {
     name: 'Punta Barrow',
     shipMessage: function shipMessage()
@@ -154,3 +154,63 @@ function contadorImpuro () {
 }
 
 //ya es impura porque a lo largo de la funcion, estaremos modificando esa variable global que es a.
+
+
+const Batman = {
+    name: 'Batman',
+    saludar: function () {
+        console.log(`Hola, soy ${this.name}`)
+    }
+
+}
+
+Batman.saludar()
+
+
+
+function contador () {
+    let contador = 0
+    while(contador <= 100) {
+        console.log(contador)
+        contador++;
+    }
+
+
+
+}
+
+contador()
+*/
+
+
+/* const suma = (a, b) => a + b;
+
+console.log(suma(3, 6))
+
+
+function sumar (x, y) {
+    return x + y
+}
+
+console.log(sumar(3,6))
+*/
+
+
+
+let brand = 'Samsung'
+let model = 'Galaxy S'
+let yearModel = 2024
+let price = 999
+
+function smarthPhone () {
+    let brand = 'Apple'
+    let model = 'Iphone'
+    let yearModel = 2024
+    let price = 1099
+
+    return (`This is the ${brand} ${model} ${yearModel} model. At ${price} USD `)
+}
+
+console.log(smarthPhone())
+
+console.log(`This is the ${brand} ${model} ${yearModel} model. At ${price} USD `)

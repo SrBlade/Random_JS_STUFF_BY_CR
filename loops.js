@@ -90,10 +90,10 @@ array.forEach((item) => {
 
 //simple xample:
 */
+/*
+let canastaBasica = ['arroz ', 'pollo ', 'Habichuelas', 'huevos']
 
-const canastaFamiliar = ['arroz, ', 'pollo, ', 'Habichuelas,', 'huevos']
-
-for (alimentos of canastaFamiliar) {
+for (alimentos of canastaBasica) {
     console.log(alimentos)
 }
 
@@ -145,21 +145,84 @@ hay que tener mucho cuidado porque si ejecutamos un loop con while que no se pue
 
 //declaramos nuestra variable en 0, pos va a tener que aumentar.
 
-contador = 0
+//contador = 0
 
 //creamos nuestro while
 
-while (contador <= 10) {
+/*while (contador <= 10) {
     console.log(contador)
     contador++;
-}
+}*/
 
 //con ++ y el nombre de la variable, si es un number o integer esta ira en incremento.
 
 //con do while, es algo parecido al while pero se diferencia en su sintaxis, se hace de la siguiente forma con un ejemplo
 
 
-do {
+/*do {
     console.log(contador)
     contador++;
 } while(contador <= 100)
+ */
+
+
+   /* for(let i = 0; i <= 10000; i++) {
+        console.log(i)
+    } */
+
+
+/*let message = 'Estos son los miembros de la justice league: '
+console.log(message)
+
+let justiceLeague = ['Flash', 'Batman', 'Superman', 'Aquaman', 'WonderWoman', 'Green lantern', 'Arrow', 'Martian ManHunter']
+
+for (members of justiceLeague) {
+    
+    console.log(members)
+}*/
+
+/*
+let price = parseFloat(prompt('Cuanto cuesta el producto?'))
+let originalPrice = price
+let originalDiscount = parseFloat(prompt('De cuanto es el descuento? '))
+let discount = originalDiscount
+
+function calculateDiscount () {
+    priceDiscount = originalPrice * discount / 100
+    totalPrice = price - priceDiscount
+    alert(`El precio original era de: ${originalPrice}`)
+    alert(`El descuento es de: ${discount}`)
+    alert(`Se le restaran ${priceDiscount} al producto`)
+    alert(`El precio con descuento es de: ${totalPrice}`)
+
+}
+
+
+calculateDiscount()
+
+*/
+
+//better
+
+let precioPrompt = parseInt(prompt('De cuanto es el precio del producto?'))
+let precio = precioPrompt
+
+let descuentoPrompt = parseInt(prompt('De cuanto es el descuento en este producto?'))
+let descuento = descuentoPrompt
+
+function calcularDescuento (precio, descuento) {
+    precioConDescuento = (precio * descuento) / 100
+    precioTotal = precio - precioConDescuento
+    
+    alert(`El precio original era de: ${precio}`)
+    alert(`El valor del descuento de este producto es de: ${descuento}`)
+    alert(`El descuento es de: ${precioConDescuento}`)
+    alert(`Asi que el precio final es de: ${precioTotal}`)
+
+
+}
+
+calcularDescuento(precio, descuento)
+
+
+

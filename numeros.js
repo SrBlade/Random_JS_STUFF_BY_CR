@@ -1,7 +1,7 @@
 //En javascript podemos representar tanto los numeros enteros como los decimales. Como 35 y las iniciales del numero PI:
 
 //Ejemplo y explicacion:
-
+/*
 const integer = 35
 const decimal = 3.14
 
@@ -15,7 +15,7 @@ no solo con numeros, sino tambien con strings, booleas, undefined etc.
 //Tambien en javascript podemos representar otros tipos de datos numeros, como notacion cientifica, infinity y NaN:
 
 //EJEMPLOS
-
+/*
 const notacion = 5e6
 
 
@@ -31,7 +31,7 @@ especialmente con condicionales. Y con infinity como su  nombre lo dice, devolve
 */
 
 //EJEMPLO FAMOSO
-
+/*
 const ceroEntreCero = 0/0
 console.log(ceroEntreCero)
 
@@ -94,3 +94,46 @@ console.log(random)
 //Tienes 12 manzanas y dos bolsas que pueden contener hasta 5 manzanas cada una. 
 //Si intentas distribuir todas las manzanas en las bolsas, el módulo de esta operación (12 mod 5) o 12 % 5 es 2. 
 //Esto significa que después de llenar las dos bolsas, te quedan 2 manzanas que no caben en ninguna de ellas. En resumen, el módulo son esas 2 manzanas extra.
+*/
+
+
+
+function externo () {
+    let variableExterna = 'Soy un string!'
+
+    function interna () {
+
+        console.log(variableExterna)
+
+
+    }
+    return interna;
+
+}
+
+const externoEjemplo = externo()
+
+externo()
+
+//otro ejemplo
+
+
+
+function createCounter () {
+    let counter = 0
+    return function () {
+        
+        counter++;
+    console.log(counter)
+        
+
+    }
+
+}
+
+const contadorA = createCounter()
+contadorA()
+contadorA()
+
+const contadorB = createCounter()
+contadorB()

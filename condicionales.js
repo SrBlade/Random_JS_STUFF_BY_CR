@@ -120,7 +120,7 @@ const edad = 18
 const message = edad >= 18 ? 'Puedes pasar' : 'No puedes pasar'
 
 
-//el siguiente condicional es SWITCH
+//CONCICIONAL SWITCH\\
 
 //la forma en la que se ejecuta SWITCH es la siguiente
 
