@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fefefe;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .main-div {
+            background-color: #ffffff31;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        h1 {
+            margin-bottom: 0px;
+        }
+
+        .main-div p {
+            margin-bottom: 0px ;
+        }
+
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #timeline-section {
+            display: none;
+        }
+
+        #create-account {
+            display: none;
+        }
+        #create-button {
+            padding: 0;
+        }
+
+        #create-timeline {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <section id="login-section">
+        <div class="main-div">
+            <h1>Iniciar Sesion</h1>
+            <p>Usuario</p>
+            <input type="text" id="user-input" placeholder="ingresa tu usuario">
+            <p>Password</p>
+            <input type="text" id="password-input" placeholder="ingresa tu password">
+            <button id="ingresar-button" onclick="iniciarSesion()">Ingresar</button>
+            <p id="alert-p"></p>
+            <p id="create-button" onclick="crear()">Crear cuenta</p>
+        </div>
+    </section>
+
+    <section id="timeline-section">
+        <div class="main-div">
+            <p id="timeline1"></p>
+            <p id="timeline2"></p>
+            
+        </div>
+    </section>
+
+    <section id="create-account">
+        <div class="main-div">
+            <h1>Crear cuenta</h1>
+            <p>Usuario</p>
+            <input type="text" id="user-create" placeholder="tu nombre de usuario">
+            <p>Password</p>
+            <input type="text" id="password-create" placeholder="tu password">
+            <button id="crear-button" onclick="crearElNuevoUsuario()" >Crear</button>
+            <p id="alert-p"></p>
+        
+            <p id="ingresar" onclick="ingresar()">Ingresar una sesion</p>
+        </div>
+
+    </section>
+
+    <section id="create-timeline">
+        <div class="main-div">
+            <h1>Crea un timeline</h1>
+            <p> nombre de usuario</p>
+            <input type="text" id="user-name" placeholder="tu nombre de usuario">
+            <p>status</p>
+            <input type="text" id="user-status" placeholder="ingresa un status">
+            <button id="crear-timeline" onclick="crearNuevoTimeline()">Crear</button>
+            <p id="alert-p"></p>
+        
+            <p id="ingresar" onclick="ingresar()">Ingresar una sesion</p>
+        </div>
+
+    </section>
+</body>
+
+<script>
+    const usuario = document.getElementById('user-input');
+    const userPassword = document.getElementById('password-input');
+    const sectionTimeline = document.getElementById('timeline-section');
+    const mainSection = document.getElementById('login-section');
+    const message1 = document.getElementById('timeline1');
+    const message2 = document.getElementById('timeline2');
+    const alertMessage = document.getElementById('alert-p')
+    const createSection = document.getElementById('create-account')
+    const createButton = document.getElementById('create-button')
+    const crearTimelineSection = document.getElementById('create-timeline')
+    const crearElUsuario = document.getElementById('crear-button')
+    const nuevoUsuario = document.getElementById('user-create')
+    const nuevoPassword = document.getElementById('password-create')
+    const nombreUsuario = document.getElementById('user-name')
+    const nuevoStatus = document.getElementById('user-status')
+    
+
+    const users = [
+        {username: 'Calvin', password: '2325'},
+        {username: 'Chris', password: '1234'},
+        {username: 'Xavier', password: '2032'},
+        {username: 'Carlos', password: '1968'},
+        {username: 'Alice', password: '2035'}
+    ];
+
+    const timeline = [
+        {username: 'Calvin', status: 'Trying better'},
+        {username: 'Chris', status: 'listening music'},
+        {username: 'Xavier', status: 'Hello there'},
+        {username: 'Carlos', status: 'zzzz'},
+        {username: 'Alice', status: 'hella thara'}
+    ];
+
+    let randomTimeline = timeline[Math.floor(Math.random() * timeline.length)]
+    let messageTimeline = randomTimeline.username
+    let statusTimeline = randomTimeline.status
+    
+    console.log(randomTimeline)
+
+    function iniciarSesion() {
+        const usuarioDatos = usuario.value; 
+        const contrasenaDatos = userPassword.value; 
+
+        let checkUser = users.find(user => user.username === usuarioDatos && user.password === contrasenaDatos);
+        
+        if (checkUser) {
+            mainSection.style.display = 'none';
+            sectionTimeline.style.display = 'block';
+            
+        } else {
+            alertMessage.textContent = 'Hubo algun error, intenta de nuevo'
+            alertMessage.style.color = 'red'
+            
+        }
+
+        message1.textContent = usuarioDatos
+        message2.textContent = statusTimeline
+    }
+
+
+    function crear() {
+        createSection.style.display = 'block'
+        mainSection.style.display = 'none'
+        crearTimelineSection.style.display = 'none'
+    }
+
+    function ingresar() {
+        createSection.style.display = 'none'
+        mainSection.style.display = 'block'
+        crearTimelineSection.style.display = 'none'
+    }
+
+    function crearElTimeline() {
+        createSection.style.display = 'none'
+        mainSection.style.display = 'none'
+        crearTimelineSection.style.display = 'block'
+    }
+
+    
+
+    createButton.addEventListener('click', crear())
+
+
+    class crearCuenta {
+        constructor(username, password) {
+            this.username = username
+            this.password = password
+        }
+    }
+
+    class crearTimeline {
+        constructor(profileName, status) {
+            this.profileName = profileName
+            this.status = status
+        }
+    }
+
+    function crearElNuevoUsuario() {
+    
+    const username = nuevoUsuario.value
+    const password = nuevoPassword.value
+
+    
+    const elUsuario = { username, password };
+    users.push(elUsuario);
+
+    console.log('Nuevo usuario creado:', elUsuario);
+    console.log('Lista actualizada de usuarios:', users);
+
+    createSection.style.display = 'none'
+        mainSection.style.display = 'none'
+        crearTimelineSection.style.display = 'block'
+
+}
+
+
+function crearNuevoTimeline() {
+    const username = nombreUsuario.value
+    const status = nuevoStatus.value 
+
+    const nuevoTimeline = {username, status}
+    timeline.push(nuevoTimeline)
+    console.log('Nuevo timeline creado:', nuevoTimeline);
+    console.log('Lista actualizada de usuarios:', timeline);
+
+    createSection.style.display = 'none'
+        mainSection.style.display = 'none'
+        crearTimelineSection.style.display = 'none'
+        sectionTimeline.style.display = 'block';
+
+        let newMessageTimeline = nuevoTimeline.username
+    let newStatusTimeline = nuevoTimeline.status
+
+    message1.textContent = newMessageTimeline
+    message2.textContent = newStatusTimeline
+}
+
+
+
+
+</script>
+</html>
+

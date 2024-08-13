@@ -18,7 +18,7 @@ function startGame () {
     alert('just guess the word, is a programming lenguage and have 5 letters')
     alert('starts with p')
 
-    while (attemps < 0) {
+    while (attemps > 0) {
         let suposicion = prompt('adivina la palabra!!: ')
         if (verificarsuposicion(suposicion,palabraOculta)) {
             alert('correcto, esa es la palabra')

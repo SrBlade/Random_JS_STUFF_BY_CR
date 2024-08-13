@@ -89,8 +89,7 @@ array.forEach((item) => {
 //codigo a ejecutar}
 
 //simple xample:
-*/
-/*
+
 let canastaBasica = ['arroz ', 'pollo ', 'Habichuelas', 'huevos']
 
 for (alimentos of canastaBasica) {
@@ -159,19 +158,19 @@ hay que tener mucho cuidado porque si ejecutamos un loop con while que no se pue
 //con do while, es algo parecido al while pero se diferencia en su sintaxis, se hace de la siguiente forma con un ejemplo
 
 
-/*do {
+do {
     console.log(contador)
     contador++;
 } while(contador <= 100)
- */
+ 
 
 
-   /* for(let i = 0; i <= 10000; i++) {
+    for(let i = 0; i <= 10000; i++) {
         console.log(i)
-    } */
+    } 
 
 
-/*let message = 'Estos son los miembros de la justice league: '
+let message = 'Estos son los miembros de la justice league: '
 console.log(message)
 
 let justiceLeague = ['Flash', 'Batman', 'Superman', 'Aquaman', 'WonderWoman', 'Green lantern', 'Arrow', 'Martian ManHunter']
@@ -179,9 +178,7 @@ let justiceLeague = ['Flash', 'Batman', 'Superman', 'Aquaman', 'WonderWoman', 'G
 for (members of justiceLeague) {
     
     console.log(members)
-}*/
-
-/*
+}
 let price = parseFloat(prompt('Cuanto cuesta el producto?'))
 let originalPrice = price
 let originalDiscount = parseFloat(prompt('De cuanto es el descuento? '))
@@ -200,7 +197,7 @@ function calculateDiscount () {
 
 calculateDiscount()
 
-*/
+
 
 //better
 

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>intento de red social</title>
+</head>
+<style>
+
+
+
+
+</style>
+<body>
+<div class="main-div">
+
+    <h1>inicia sesion!</h1>
+    <button id="button" onclick="iniciarSesion()">Iniciar sesion</button>
+
+
+</div>
+
+ 
+</body>
+
+<script>
+
+const dataBase = [
+    {
+        username: 'SrBlade',
+        password: '2325'
+    },
+    {
+        username: 'Calvin',
+        password: '2006'
+
+
+    },
+
+    {
+        username: 'Rafael',
+        password: '123'
+    },
+    {
+        username: 'Xavier',
+        password: '2032'
+
+
+    }
+
+]
+
+
+
+
+
+
+const timeline = [
+    {
+        username: 'James',
+        timeline: 'Las cosas como son'
+
+    },
+
+    {
+        username: 'Calvin',
+        timeline: 'Toy jalto'
+
+    },
+
+    {
+        username: 'Rafa',
+        timeline: 'Baneen al admin'
+
+    },
+
+    {
+        username: 'chris',
+        timeline: 'random text here'
+
+    },
+
+
+
+]
+
+
+
+function iniciarSesion () {
+    const nombre = prompt('Cual es tu usuario?')
+    const userPassword = prompt('cual es tu contrasena?')
+
+    const checkUser = dataBase.find(user => user.username === nombre && user.password === userPassword)
+
+    if (checkUser) {
+        alert('iinicio exitoso')
+
+
+    } else {
+        alert('inicio fallido')
+    }
+
+
+}
+
+
+
+function mostrarTimeline (username) {
+
+const mostrarTime = timeline.find(post => post.username == username)
+
+if (mostrarTime) {
+    alert(`Bienvenido! ${username}`)
+} else {}
+
+
+
+}
+</script>
+</html>
+
+
+
